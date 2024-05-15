@@ -2,19 +2,20 @@
 import { ref } from "vue";
 import ClientHttp from "../../../libs/ClientHttp";
 import { toast } from 'vue3-toastify';
+import router from "@/router";
 const $toast = ref("");
 
 const error = ref("")
 
 const credentials = ref({
-    email: "",
+    username: "",
     password: ""
 })
 
 const login = async function login() {
     try {
         if (
-            credentials.value.email.trim() === "" &&
+            credentials.value.username.trim() === "" &&
             credentials.value.password.trim() === ""
         ) {
             const message = 'Tous les champs sont requis'
@@ -25,7 +26,7 @@ const login = async function login() {
         }
 
         const user = await ClientHttp.post('/auth/login', {
-            email: credentials.value.email,
+            username: credentials.value.username,
             password: credentials.value.password,
         });
 
@@ -38,7 +39,7 @@ const login = async function login() {
                 position: toast.POSITION.TOP_RIGHT
             })
             setTimeout(() => {
-                router.push('/layout')
+                router.push('/')
             }, 3000);
         }
     } catch (e) {

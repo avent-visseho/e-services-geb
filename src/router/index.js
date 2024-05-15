@@ -52,7 +52,7 @@ router.beforeEach(async (to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated) {
     next('/login'); // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
   } else if (to.meta.requiredRole && userRoleValue !== to.meta.requiredRole) {
-    next('/unauthorized'); // Rediriger vers une page non autorisée si l'utilisateur n'a pas le rôle requis
+    next('/john'); // Rediriger vers une page non autorisée si l'utilisateur n'a pas le rôle requis
   } else {
     next(); // Autoriser la navigation
   }

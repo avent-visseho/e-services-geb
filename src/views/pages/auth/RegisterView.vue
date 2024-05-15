@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import ClientHttp from "../../../libs/ClientHttp";
 import { toast } from 'vue3-toastify';
+import router from "@/router";
 const $toast = ref("");
 
 const error = ref("")
@@ -27,7 +28,7 @@ const register = async function register() {
 
         }
 
-        const user = await ClientHttp.post('auth/register', {
+        const user = await ClientHttp.post('/auth/signup', {
             username: credentials.value.username,
             email: credentials.value.email,
             password: credentials.value.password,
@@ -56,7 +57,6 @@ const register = async function register() {
 </script>
 
 <template>
-    <!-- <body data-layout="horizontal"> -->
     <div class="auth-page">
         <div class="container-fluid p-0">
             <div class="row g-0 vh-100 d-flex align-items-center justify-content-center">

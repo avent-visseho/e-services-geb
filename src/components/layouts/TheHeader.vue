@@ -164,8 +164,8 @@
                                 class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock screen</a>
                         <div class="dropdown-divider"></div>
 
-                        <router-link class="dropdown-item" to="/login"><i
-                                class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</router-link>
+                        <button class="dropdown-item" @click="logout"><i
+                                class="mdi mdi-logout font-size-16 align-middle me-1"></i>Logout</button>
                     </div>
                 </div>
 
@@ -173,12 +173,29 @@
         </div>
     </header>
 </template>
-<script>
+<script setup>
 import DropDownMenuItem from "./DropdownMenu/DropDownMenuItem.vue";
 import DropDownMenuItemIcon from "./DropdownMenu/DropDownMenuItemIcon.vue";
 import NotificationItem from "./notification/NotificationItem.vue";
-export default {
-    name: "TheHeader",
-    components: { DropDownMenuItem, DropDownMenuItemIcon, NotificationItem },
-};
+
+import router from "@/router";
+import { toast } from 'vue3-toastify';
+
+const logout = async () => {
+    try {
+        //revoke the token from local storage
+        localStorage.removeItem('token');
+
+        const message = "Successfully loged out!";
+        toast.success(message, { position: toast.POSITION.TOP_RIGHT });
+
+        //redirect to the login page
+        router.push('/login')
+    } catch (error) {
+        console.error('Error during logout', error);
+        const message = 'Logout failled. Please try again'
+        toast.error(message, { position: toast.POSITION.TOP_RIGHT });
+
+    }
+}
 </script>
