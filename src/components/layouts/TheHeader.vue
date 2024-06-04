@@ -5,17 +5,9 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
-                    <a href="index.html" class="logo logo-dark">
-                        <span class="logo-sm">
-                            <img src="/src/assets/images/logo-sm.svg" alt="" height="24">
-                        </span>
-                        <span class="logo-lg">
-                            <img src="/src/assets/images/logo-sm.svg" alt="" height="24"> <span
-                                class="logo-txt">GEBCARDII</span>
-                        </span>
-                    </a>
 
-                    <a href="index.html" class="logo logo-light">
+
+                    <router-link to="/" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="/src/assets/images/logo-sm.svg" alt="" height="24">
                         </span>
@@ -23,7 +15,17 @@
                             <img src="/src/assets/images/logo-sm.svg" alt="" height="24"> <span
                                 class="logo-txt">GEBCARDII</span>
                         </span>
-                    </a>
+                    </router-link>
+
+                    <router-link to="/" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="/src/assets/images/logo-sm.svg" alt="" height="24">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="/src/assets/images/logo-sm.svg" alt="" height="24"> <span
+                                class="logo-txt">GEBCARDII</span>
+                        </span>
+                    </router-link>
                 </div>
 
                 <button type="button"
@@ -153,7 +155,7 @@
                         aria-expanded="false">
                         <img class="rounded-circle header-profile-user" src="/src/assets/images/users/avatar-1.jpg"
                             alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Shawn L.</span>
+                        <span class="d-none d-xl-inline-block ms-1 fw-medium">{{ userInfo.username }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
@@ -174,6 +176,7 @@
     </header>
 </template>
 <script setup>
+import { ref } from "vue";
 import DropDownMenuItem from "./DropdownMenu/DropDownMenuItem.vue";
 import DropDownMenuItemIcon from "./DropdownMenu/DropDownMenuItemIcon.vue";
 import NotificationItem from "./notification/NotificationItem.vue";
@@ -181,10 +184,15 @@ import NotificationItem from "./notification/NotificationItem.vue";
 import router from "@/router";
 import { toast } from 'vue3-toastify';
 
+const user = ref();
+user.value = localStorage.getItem("userInfo");
+const userInfo = JSON.parse(user.value);
+
+
 const logout = async () => {
     try {
         //revoke the token from local storage
-        localStorage.removeItem('token');
+        localStorage.clear();
 
         const message = "Successfully loged out!";
         toast.success(message, { position: toast.POSITION.TOP_RIGHT });

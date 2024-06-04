@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://192.168.0.117:8080";
+const baseURL = "http://192.168.0.122:8080";
 /* const baseURL = "http://127.0.0.1:8000"; */
 
 //création d'une instance Axios avec la configuration de base
@@ -12,6 +12,7 @@ const clientHtt = axios.create({
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
   },
+/*   withCredentials: true, */
 });
 
 //ajout d'un intercepteur pour les reqêtes sortantes

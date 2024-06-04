@@ -1,3 +1,8 @@
+<script setup>
+
+
+</script>
+
 <template>
     <div class="topnav">
         <div class="container-fluid">
@@ -7,7 +12,7 @@
 
                         <li class="nav-item dropdown">
                             <router-link class="nav-link dropdown-toggle arrow-none" id="topnav-dashboard" role="button"
-                                to="/"><vue-feather type="home" />
+                                to="/"><vue-feather type="home" class="vue-fether-ico"/>
                                 <span data-key="t-dashboards">Dashboard</span></router-link>
                         </li>
 
@@ -19,62 +24,18 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
-                                        role="button">
-                                        <span data-key="t-forms">Bureau Etat Civil</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-form">
-                                        <router-link to="/new-request" class="dropdown-item"
-                                            data-key="t-form-elements">Nouvelle demande</router-link>
-                                        <a href="form-validation.html" class="dropdown-item"
-                                            data-key="t-form-validation">Validation</a>
-                                        <a href="form-advanced.html" class="dropdown-item"
-                                            data-key="t-form-advanced">Advanced Plugins</a>
-                                        <a href="form-editors.html" class="dropdown-item"
-                                            data-key="t-form-editors">Editors</a>
-                                        <a href="form-uploads.html" class="dropdown-item" data-key="t-form-upload">File
-                                            Upload</a>
-                                        <a href="form-wizard.html" class="dropdown-item"
-                                            data-key="t-form-wizard">Wizard</a>
-                                        <a href="form-mask.html" class="dropdown-item" data-key="t-form-mask">Mask</a>
-                                    </div>
+                                    <router-link to="/bureau-etat-civil"
+                                        class="dropdown-item dropdown-toggle arrow-none"><span data-key="t-forms">Bureau
+                                            Etat Civil</span></router-link>
                                 </div>
                                 <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
-                                        role="button">
-                                        <span data-key="t-tables">Officier Etat Civil</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-table">
-                                        <a href="tables-basic.html" class="dropdown-item"
-                                            data-key="t-basic-tables">Bootstrap Basic</a>
-                                        <a href="tables-datatable.html" class="dropdown-item"
-                                            data-key="t-data-tables">Data Tables</a>
-                                        <a href="tables-responsive.html" class="dropdown-item"
-                                            data-key="t-responsive-table">Responsive</a>
-                                        <a href="tables-editable.html" class="dropdown-item"
-                                            data-key="t-editable-table">Editable</a>
-                                    </div>
+                                    <router-link to="/officier-etat-civil"
+                                        class="dropdown-item dropdown-toggle arrow-none"><span data-key="t-forms">Officier
+                                            Etat Civil</span></router-link>
                                 </div>
                                 <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-charts"
-                                        role="button">
-                                        <span data-key="t-charts">Paramétrage des produits</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-charts">
-                                        <a href="charts-apex.html" class="dropdown-item" data-key="t-apex-charts">Apex
-                                            charts</a>
-                                        <a href="charts-echart.html" class="dropdown-item" data-key="t-e-charts">E
-                                            charts</a>
-                                        <a href="charts-chartjs.html" class="dropdown-item"
-                                            data-key="t-chartjs-charts">Chartjs</a>
-                                        <a href="charts-knob.html" class="dropdown-item" data-key="t-knob-charts">Jquery
-                                            Knob</a>
-                                        <a href="charts-sparkline.html" class="dropdown-item"
-                                            data-key="t-sparkline-charts">Sparkline</a>
-                                    </div>
+                                    <router-link to="/param-produits"
+                                        class="dropdown-item dropdown-toggle arrow-none"><span data-key="t-forms">Paramétrage des produits</span></router-link>
                                 </div>
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-icons"
@@ -99,13 +60,19 @@
                                         <span data-key="t-maps">Type de produits</span>
                                         <div class="arrow-down"></div>
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-map">
-                                        <a href="maps-google.html" class="dropdown-item" data-key="t-g-maps">Google</a>
-                                        <a href="maps-vector.html" class="dropdown-item" data-key="t-v-maps">Vector</a>
-                                        <a href="maps-leaflet.html" class="dropdown-item"
-                                            data-key="t-l-maps">Leaflet</a>
+                                    <div class="dropdown-menu" aria-labelledby="topnav-form">
+                                        <router-link to="/new-request/certificat" class="dropdown-item"
+                                            data-key="t-form-elements">CERTIFICAT</router-link>
+                                        <router-link to="/new-request/acte" class="dropdown-item"
+                                            data-key="t-form-elements">ACTES</router-link>
+                                        <router-link to="/new-request/carte" class="dropdown-item"
+                                            data-key="t-form-elements">CARTE</router-link>
                                     </div>
                                 </div>
+                                <router-link to="/create-produits" class="dropdown-item dropdown-toggle arrow-none"
+                                    id="topnav-form" role="button">
+                                    <span data-key="t-forms">Produits</span>
+                                </router-link>
                             </div>
                         </li>
 
@@ -123,12 +90,12 @@
                                         <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-form">
-                                        <router-link to="/new-request" class="dropdown-item"
-                                            data-key="t-form-elements">Certificat</router-link>
-                                        <a href="form-validation.html" class="dropdown-item"
-                                            data-key="t-form-validation">Actes</a>
-                                        <a href="form-advanced.html" class="dropdown-item"
-                                            data-key="t-form-advanced">Cartes</a>
+                                        <router-link to="/new-request/certificat" class="dropdown-item"
+                                            data-key="t-form-elements">CERTIFICAT</router-link>
+                                            <router-link to="/new-request/acte" class="dropdown-item"
+                                            data-key="t-form-elements">ACTES</router-link>
+                                            <router-link to="/new-request/cartes" class="dropdown-item"
+                                            data-key="t-form-elements">CARTES</router-link>
                                     </div>
                                 </div>
                                 <div class="dropdown">
@@ -213,12 +180,12 @@
                                         <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-utility">
-                                        <router-link to="/administration" class="dropdown-item"
-                                            data-key="t-starter-page">administration</router-link>
+                                        <router-link to="/create-user" class="dropdown-item"
+                                            data-key="t-starter-page">Creer Utilisateur</router-link>
 
-                                         <router-link to="/centre" class="dropdown-item"
-                                            data-key="t-maintenance">centres</router-link>   
-                                            
+                                        <router-link to="/centre" class="dropdown-item"
+                                            data-key="t-maintenance">centres</router-link>
+
                                         <a href="pages-comingsoon.html" class="dropdown-item"
                                             data-key="t-coming-soon">Coming Soon</a>
                                         <a href="pages-timeline.html" class="dropdown-item"
@@ -249,8 +216,7 @@
     </div>
 </template>
 
-<script setup>
-
-</script>
-
-<style scoped></style>
+<style scoped>
+    
+    
+</style>
